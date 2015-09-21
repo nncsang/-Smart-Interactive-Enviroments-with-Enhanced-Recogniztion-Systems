@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:overScrollMode="always"
+            android:isScrollContainer="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical"
+            android:background="#ffffff">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="#ffffff">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:paddingLeft="6px"
+                android:paddingTop="5px"
+                android:paddingRight="5px"
+                android:paddingBottom="5px"
+                android:layout_margin="5dp">
+
+            <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/landmark_thumbnail"
+                    android:layout_gravity="left|center_vertical"
+                    />
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_margin="5dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Landmark Name"
+                        android:id="@+id/landmark_name"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="#fc0000"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Landmark Address"
+                        android:id="@+id/landmark_address"
+                        android:layout_gravity="center"
+                        android:textColor="#0099cc"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mô tả"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_gravity="left|center_vertical"
+                        android:textStyle="bold"
+                        android:textColor="#000000"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Landmark Descriptor: This is a short paragraph"
+                        android:id="@+id/landmark_description"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="#000000"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Các dịch vụ"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_gravity="left|center_vertical"
+                        android:textStyle="bold"
+                        android:textColor="#000000"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shopping, Movie Theatre, Offices"
+                        android:id="@+id/landmark_services"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="#000000"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Liên lạc"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_gravity="left|center_vertical"
+                        android:textStyle="bold"
+                        android:textColor="#000000"/>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginLeft="20dp">
+
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginRight="5dp">
+
+                        <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/btn_call"
+                                android:layout_gravity="center_horizontal|top"
+                                android:background="@drawable/call"
+                                android:clickable="true"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Gọi điện"
+                                android:gravity="center_horizontal"
+                                android:textColor="#000000"
+                                android:layout_gravity="center_horizontal"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp">
+
+                        <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/btn_map"
+                                android:layout_gravity="center_horizontal|top"
+                                android:background="@drawable/map"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:clickable="true"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tìm đường"
+                                android:gravity="center_horizontal"
+                                android:textColor="#000000"
+                                android:layout_gravity="center_horizontal"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="5dp">
+
+                        <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/btn_photos"
+                                android:layout_gravity="center_horizontal|top"
+                                android:background="@drawable/photos"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:clickable="true"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ảnh"
+                                android:gravity="center_horizontal"
+                                android:textColor="#000000"
+                                android:layout_gravity="center_horizontal"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:clickable="true">
+
+                        <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/btn_video"
+                                android:layout_gravity="center_horizontal|top"
+                                android:background="@drawable/video"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Video"
+                                android:gravity="center_horizontal"
+                                android:textColor="#000000"
+                                android:layout_gravity="center_horizontal"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <WebView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/landmark_webview"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="5dp"/>
+    </LinearLayout>
+</ScrollView>

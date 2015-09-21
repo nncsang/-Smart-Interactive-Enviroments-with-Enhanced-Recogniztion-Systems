@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/ic_launcher">
+
+    <TextView
+            android:layout_width="240px"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:id="@+id/titleInfo"
+            android:layout_gravity="right|center_vertical"
+            android:background="#000000"
+            android:textColor="#ffffff"
+            android:alpha="0.8"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"/>
+
+    <RelativeLayout
+            android:layout_width="240px"
+            android:layout_height="250px"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff"
+            android:alpha="0.8">
+
+        <ImageView
+                android:layout_width="240px"
+                android:layout_height="90px"
+                android:id="@+id/mapView"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="378/1 An Duong Vuong, P. 4, Q. 5, TP. HCM"
+                android:id="@+id/address"
+                android:layout_below="@+id/mapView"
+                android:layout_alignParentLeft="true"/>
+
+        <!--        android:textColor="@android:color/holo_blue_dark"/>-->
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: This building was built in 1991."
+                android:id="@+id/description"
+                android:layout_below="@+id/address"
+                android:layout_alignParentLeft="true"
+                android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Call | Direction | Site"
+                android:id="@+id/Menu"
+                android:layout_below="@+id/description"
+                android:layout_alignParentLeft="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photos | Videos"
+                android:id="@+id/Gallery"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/Menu"/>
+
+    </RelativeLayout>
+</LinearLayout>

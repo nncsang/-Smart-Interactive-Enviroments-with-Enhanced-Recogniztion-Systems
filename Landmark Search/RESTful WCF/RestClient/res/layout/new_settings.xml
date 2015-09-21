@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/settings_screen">
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="60dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phương pháp so khớp mẫu"
+            android:id="@+id/radioBtn_template_matching"
+            android:singleLine="false"
+            android:textColor="#000000"/>
+
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phương pháp phân loại ảnh"
+                android:id="@+id/radioBtn_image_classification"
+                android:textColor="#000000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:clickable="true"
+            android:id="@+id/linearLayout"
+            android:layout_marginTop="150dp">
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_set_default_mode"
+                android:layout_gravity="center_horizontal|top"
+                android:background="@drawable/setting"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
+
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Cấu hình mặc định"
+                android:gravity="center_horizontal"
+                android:textColor="#000000"/>
+    </LinearLayout>
+
+</RelativeLayout>

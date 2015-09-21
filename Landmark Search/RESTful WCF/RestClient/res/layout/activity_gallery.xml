@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ViewFlipper
+            android:id="@+id/viewFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:addStatesFromChildren="true"
+            android:layout_centerInParent="true">
+
+        <fragment
+                android:id="@+id/galaxyFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:name="com.example.restclient.GalleryFragment"/>
+
+        <fragment
+                android:id="@+id/detailFragment"
+                android:name="com.example.restclient.DetailLandmarkFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+        <fragment
+                android:id="@+id/bookFragment"
+                android:name="com.example.restclient.DetailBookFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+        <fragment
+                android:id="@+id/posterFragment"
+                android:name="com.example.restclient.DetailPosterFragment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+    </ViewFlipper>
+</LinearLayout>

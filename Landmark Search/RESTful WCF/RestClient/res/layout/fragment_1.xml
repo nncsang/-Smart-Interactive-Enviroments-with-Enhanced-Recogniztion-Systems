@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/black_background"
+    android:gravity="right"
+    android:orientation="vertical" >
+
+    <!-- <FrameLayout
+	    android:id="@+id/camera_preview"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+    /> -->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="fill_parent"
+        android:layout_height="700px"
+        android:adjustViewBounds="true"
+        android:alpha="100"
+        android:orientation="vertical"
+        android:src="@drawable/eiffel"
+        android:layout_centerInParent="true"    />
+
+    <ImageView
+            android:id="@+id/animationView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:adjustViewBounds="true"
+            android:alpha="255"
+            android:orientation="vertical" />
+
+    <ImageButton
+        android:id="@+id/recapture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/cancel"
+        android:layout_centerHorizontal="true"
+        android:alpha="100"
+        android:background="@drawable/camera"
+        android:clickable="true"
+        android:src="@drawable/camera" />
+
+    <ImageButton
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="19dp"
+        android:alpha="100"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/gallery" />
+
+    <ImageButton
+        android:id="@+id/detect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/recapture"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="18dp"
+        android:alpha="100"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:src="@drawable/detect" />
+
+</RelativeLayout>
