@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LandmarkDBModelStoreContainer" CdmEntityContainer="LandmarkDBEntities">
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="LandmarkDBModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="ID_Dataset" ColumnName="ID_Dataset" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LandmarkID" ColumnName="LandmarkID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Infoes">
+      <EntityTypeMapping TypeName="LandmarkDBModel.Info">
+        <MappingFragment StoreEntitySet="Info">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="WikiKey" ColumnName="WikiKey" />
+          <ScalarProperty Name="ID_Dataset" ColumnName="ID_Dataset" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Shot_Intro" ColumnName="Shot_Intro" />
+          <ScalarProperty Name="Thumbnail_URL" ColumnName="Thumbnail_URL" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Videos">
+      <EntityTypeMapping TypeName="LandmarkDBModel.Video">
+        <MappingFragment StoreEntitySet="Video">
+          <ScalarProperty Name="ID_Dataset" ColumnName="ID_Dataset" />
+          <ScalarProperty Name="Thumbnail_URL" ColumnName="Thumbnail_URL" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LandmarkID" ColumnName="LandmarkID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

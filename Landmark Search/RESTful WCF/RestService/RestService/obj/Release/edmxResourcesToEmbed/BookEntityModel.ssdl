@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="BookDBModelStoreContainer">
+    <EntitySet Name="ImageBook" EntityType="BookDBModel.Store.ImageBook" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Infor" EntityType="BookDBModel.Store.Infor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Review" EntityType="BookDBModel.Store.Review" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VideoBook" EntityType="BookDBModel.Store.VideoBook" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ImageBook_Infor" Association="BookDBModel.Store.FK_ImageBook_Infor">
+      <End Role="Infor" EntitySet="Infor" />
+      <End Role="ImageBook" EntitySet="ImageBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Review" Association="BookDBModel.Store.FK_Review_Review">
+      <End Role="Infor" EntitySet="Infor" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VideoBook_Infor" Association="BookDBModel.Store.FK_VideoBook_Infor">
+      <End Role="Infor" EntitySet="Infor" />
+      <End Role="VideoBook" EntitySet="VideoBook" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ImageBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="BookID" Type="int" />
+  </EntityType>
+  <EntityType Name="Infor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Field1" Type="nvarchar(max)" />
+    <Property Name="Field2" Type="nvarchar(max)" />
+    <Property Name="Field3" Type="nvarchar(max)" />
+    <Property Name="Field4" Type="nvarchar(max)" />
+    <Property Name="Field5" Type="nvarchar(max)" />
+    <Property Name="Field6" Type="nvarchar(max)" />
+    <Property Name="Field7" Type="nvarchar(max)" />
+    <Property Name="Field8" Type="nvarchar(max)" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Field9" Type="nvarchar(max)" />
+    <Property Name="Field10" Type="nvarchar(max)" />
+    <Property Name="Field11" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IDInfor" Type="int" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Body" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="VideoBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ImageBook_Infor">
+    <End Role="Infor" Type="BookDBModel.Store.Infor" Multiplicity="0..1" />
+    <End Role="ImageBook" Type="BookDBModel.Store.ImageBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImageBook">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Review">
+    <End Role="Infor" Type="BookDBModel.Store.Infor" Multiplicity="0..1" />
+    <End Role="Review" Type="BookDBModel.Store.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="IDInfor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VideoBook_Infor">
+    <End Role="Infor" Type="BookDBModel.Store.Infor" Multiplicity="1" />
+    <End Role="VideoBook" Type="BookDBModel.Store.VideoBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VideoBook">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

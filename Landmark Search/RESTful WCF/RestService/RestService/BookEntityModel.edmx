@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BookDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BookDBModelStoreContainer">
+          <EntitySet Name="ImageBook" EntityType="BookDBModel.Store.ImageBook" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Infor" EntityType="BookDBModel.Store.Infor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Review" EntityType="BookDBModel.Store.Review" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VideoBook" EntityType="BookDBModel.Store.VideoBook" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ImageBook_Infor" Association="BookDBModel.Store.FK_ImageBook_Infor">
+            <End Role="Infor" EntitySet="Infor" />
+            <End Role="ImageBook" EntitySet="ImageBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Review" Association="BookDBModel.Store.FK_Review_Review">
+            <End Role="Infor" EntitySet="Infor" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoBook_Infor" Association="BookDBModel.Store.FK_VideoBook_Infor">
+            <End Role="Infor" EntitySet="Infor" />
+            <End Role="VideoBook" EntitySet="VideoBook" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ImageBook">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="BookID" Type="int" />
+        </EntityType>
+        <EntityType Name="Infor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Field1" Type="nvarchar(max)" />
+          <Property Name="Field2" Type="nvarchar(max)" />
+          <Property Name="Field3" Type="nvarchar(max)" />
+          <Property Name="Field4" Type="nvarchar(max)" />
+          <Property Name="Field5" Type="nvarchar(max)" />
+          <Property Name="Field6" Type="nvarchar(max)" />
+          <Property Name="Field7" Type="nvarchar(max)" />
+          <Property Name="Field8" Type="nvarchar(max)" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Field9" Type="nvarchar(max)" />
+          <Property Name="Field10" Type="nvarchar(max)" />
+          <Property Name="Field11" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IDInfor" Type="int" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Body" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="VideoBook">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ImageBook_Infor">
+          <End Role="Infor" Type="BookDBModel.Store.Infor" Multiplicity="0..1" />
+          <End Role="ImageBook" Type="BookDBModel.Store.ImageBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImageBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Review">
+          <End Role="Infor" Type="BookDBModel.Store.Infor" Multiplicity="0..1" />
+          <End Role="Review" Type="BookDBModel.Store.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="IDInfor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoBook_Infor">
+          <End Role="Infor" Type="BookDBModel.Store.Infor" Multiplicity="1" />
+          <End Role="VideoBook" Type="BookDBModel.Store.VideoBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VideoBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BookDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="ImageBooks" EntityType="BookDBModel.ImageBook" />
+          <EntitySet Name="Infors" EntityType="BookDBModel.Infor" />
+          <EntitySet Name="Reviews" EntityType="BookDBModel.Review" />
+          <EntitySet Name="VideoBooks" EntityType="BookDBModel.VideoBook" />
+          <AssociationSet Name="FK_ImageBook_Infor" Association="BookDBModel.FK_ImageBook_Infor">
+            <End Role="Infor" EntitySet="Infors" />
+            <End Role="ImageBook" EntitySet="ImageBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Review" Association="BookDBModel.FK_Review_Review">
+            <End Role="Infor" EntitySet="Infors" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoBook_Infor" Association="BookDBModel.FK_VideoBook_Infor">
+            <End Role="Infor" EntitySet="Infors" />
+            <End Role="VideoBook" EntitySet="VideoBooks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ImageBook">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BookID" />
+          <NavigationProperty Name="Infor" Relationship="BookDBModel.FK_ImageBook_Infor" FromRole="ImageBook" ToRole="Infor" />
+        </EntityType>
+        <EntityType Name="Infor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Field1" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field2" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field3" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field4" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field5" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field6" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field7" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field8" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Type" Nullable="false" />
+          <Property Type="String" Name="Field9" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field10" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Field11" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ImageBooks" Relationship="BookDBModel.FK_ImageBook_Infor" FromRole="Infor" ToRole="ImageBook" />
+          <NavigationProperty Name="Reviews" Relationship="BookDBModel.FK_Review_Review" FromRole="Infor" ToRole="Review" />
+          <NavigationProperty Name="VideoBooks" Relationship="BookDBModel.FK_VideoBook_Infor" FromRole="Infor" ToRole="VideoBook" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IDInfor" />
+          <Property Type="String" Name="Title" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Infor" Relationship="BookDBModel.FK_Review_Review" FromRole="Review" ToRole="Infor" />
+        </EntityType>
+        <EntityType Name="VideoBook">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BookID" Nullable="false" />
+          <NavigationProperty Name="Infor" Relationship="BookDBModel.FK_VideoBook_Infor" FromRole="VideoBook" ToRole="Infor" />
+        </EntityType>
+        <Association Name="FK_ImageBook_Infor">
+          <End Type="BookDBModel.Infor" Role="Infor" Multiplicity="0..1" />
+          <End Type="BookDBModel.ImageBook" Role="ImageBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImageBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Review">
+          <End Type="BookDBModel.Infor" Role="Infor" Multiplicity="0..1" />
+          <End Type="BookDBModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="IDInfor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoBook_Infor">
+          <End Type="BookDBModel.Infor" Role="Infor" Multiplicity="1" />
+          <End Type="BookDBModel.VideoBook" Role="VideoBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Infor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VideoBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BookDBModelStoreContainer" CdmEntityContainer="BookDBEntities" >
+          <EntitySetMapping Name="ImageBooks">
+            <EntityTypeMapping TypeName="BookDBModel.ImageBook">
+              <MappingFragment StoreEntitySet="ImageBook">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Infors">
+            <EntityTypeMapping TypeName="BookDBModel.Infor">
+              <MappingFragment StoreEntitySet="Infor">
+                <ScalarProperty Name="Field11" ColumnName="Field11" />
+                <ScalarProperty Name="Field10" ColumnName="Field10" />
+                <ScalarProperty Name="Field9" ColumnName="Field9" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Field8" ColumnName="Field8" />
+                <ScalarProperty Name="Field7" ColumnName="Field7" />
+                <ScalarProperty Name="Field6" ColumnName="Field6" />
+                <ScalarProperty Name="Field5" ColumnName="Field5" />
+                <ScalarProperty Name="Field4" ColumnName="Field4" />
+                <ScalarProperty Name="Field3" ColumnName="Field3" />
+                <ScalarProperty Name="Field2" ColumnName="Field2" />
+                <ScalarProperty Name="Field1" ColumnName="Field1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="BookDBModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IDInfor" ColumnName="IDInfor" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoBooks">
+            <EntityTypeMapping TypeName="BookDBModel.VideoBook">
+              <MappingFragment StoreEntitySet="VideoBook">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="BookEntityModel" ZoomLevel="85" >
+        <EntityTypeShape EntityType="BookDBModel.ImageBook" Width="1.5" PointX="3" PointY="1.25" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="BookDBModel.Infor" Width="1.5" PointX="0.75" PointY="2.875" Height="4.0956022135416674" />
+        <EntityTypeShape EntityType="BookDBModel.Review" Width="1.5" PointX="3" PointY="3.875" Height="1.9802864583333353" />
+        <EntityTypeShape EntityType="BookDBModel.VideoBook" Width="1.5" PointX="3" PointY="6.625" Height="1.9802864583333326" />
+        <AssociationConnector Association="BookDBModel.FK_ImageBook_Infor" >
+          <ConnectorPoint PointX="2.25" PointY="3.0526432291666659" />
+          <ConnectorPoint PointX="3" PointY="3.0526432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="BookDBModel.FK_Review_Review" >
+          <ConnectorPoint PointX="2.25" PointY="4.8651432291666676" />
+          <ConnectorPoint PointX="3" PointY="4.8651432291666676" />
+        </AssociationConnector>
+        <AssociationConnector Association="BookDBModel.FK_VideoBook_Infor" >
+          <ConnectorPoint PointX="2.25" PointY="6.7978011067708337" />
+          <ConnectorPoint PointX="3" PointY="6.7978011067708337" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

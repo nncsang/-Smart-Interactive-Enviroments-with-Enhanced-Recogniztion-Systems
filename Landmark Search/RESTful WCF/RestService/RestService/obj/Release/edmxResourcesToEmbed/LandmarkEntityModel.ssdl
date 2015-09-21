@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LandmarkDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="LandmarkDBModelStoreContainer">
+    <EntitySet Name="Image" EntityType="LandmarkDBModel.Store.Image" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Info" EntityType="LandmarkDBModel.Store.Info" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Video" EntityType="LandmarkDBModel.Store.Video" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Image_Info" Association="LandmarkDBModel.Store.FK_Image_Info">
+      <End Role="Info" EntitySet="Info" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Video_Info" Association="LandmarkDBModel.Store.FK_Video_Info">
+      <End Role="Info" EntitySet="Info" />
+      <End Role="Video" EntitySet="Video" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LandmarkID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="ID_Dataset" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Info">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ID_Dataset" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Latitude" Type="float" />
+    <Property Name="Longitude" Type="float" />
+    <Property Name="Thumbnail_URL" Type="nvarchar(max)" />
+    <Property Name="Shot_Intro" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_Dataset" Type="int" Nullable="false" />
+    <Property Name="WikiKey" Type="nvarchar(max)" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LandmarkID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="URL" Type="nvarchar(max)" />
+    <Property Name="Thumbnail_URL" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_Dataset" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Image_Info">
+    <End Role="Info" Type="LandmarkDBModel.Store.Info" Multiplicity="1" />
+    <End Role="Image" Type="LandmarkDBModel.Store.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Info">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="ID_Dataset" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="LandmarkID" />
+        <PropertyRef Name="ID_Dataset" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Video_Info">
+    <End Role="Info" Type="LandmarkDBModel.Store.Info" Multiplicity="1" />
+    <End Role="Video" Type="LandmarkDBModel.Store.Video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Info">
+        <PropertyRef Name="ID" />
+        <PropertyRef Name="ID_Dataset" />
+      </Principal>
+      <Dependent Role="Video">
+        <PropertyRef Name="LandmarkID" />
+        <PropertyRef Name="ID_Dataset" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,10 @@
+C:\Users\ChauSang\Desktop\RestService\RestService\bin\RestService.dll
+C:\Users\ChauSang\Desktop\RestService\RestService\bin\RestService.pdb
+C:\Users\ChauSang\Desktop\RestService\RestService\obj\Release\RestService.dll
+C:\Users\ChauSang\Desktop\RestService\RestService\obj\Release\RestService.pdb
+C:\Users\ChauSang\Desktop\RestService\RestService\obj\Release\RestService.csprojResolveAssemblyReference.cache
+E:\Tai lieu\Dropbox\Dropbox\Code\Landmark Search\RESTful WCF\RestService\RestService\bin\RestService.dll
+E:\Tai lieu\Dropbox\Dropbox\Code\Landmark Search\RESTful WCF\RestService\RestService\bin\RestService.pdb
+E:\Tai lieu\Dropbox\Dropbox\Code\Landmark Search\RESTful WCF\RestService\RestService\obj\Release\RestService.csprojResolveAssemblyReference.cache
+E:\Tai lieu\Dropbox\Dropbox\Code\Landmark Search\RESTful WCF\RestService\RestService\obj\Release\RestService.dll
+E:\Tai lieu\Dropbox\Dropbox\Code\Landmark Search\RESTful WCF\RestService\RestService\obj\Release\RestService.pdb

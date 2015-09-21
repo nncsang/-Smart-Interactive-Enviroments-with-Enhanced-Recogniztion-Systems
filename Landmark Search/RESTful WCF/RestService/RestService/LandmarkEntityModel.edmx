@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LandmarkDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="LandmarkDBModelStoreContainer">
+          <EntitySet Name="Image" EntityType="LandmarkDBModel.Store.Image" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Info" EntityType="LandmarkDBModel.Store.Info" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Video" EntityType="LandmarkDBModel.Store.Video" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Image_Info" Association="LandmarkDBModel.Store.FK_Image_Info">
+            <End Role="Info" EntitySet="Info" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_Info" Association="LandmarkDBModel.Store.FK_Video_Info">
+            <End Role="Info" EntitySet="Info" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LandmarkID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="ID_Dataset" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Info">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_Dataset" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="Thumbnail_URL" Type="nvarchar(max)" />
+          <Property Name="Shot_Intro" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Dataset" Type="int" Nullable="false" />
+          <Property Name="WikiKey" Type="nvarchar(max)" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LandmarkID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="Thumbnail_URL" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Dataset" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Image_Info">
+          <End Role="Info" Type="LandmarkDBModel.Store.Info" Multiplicity="1" />
+          <End Role="Image" Type="LandmarkDBModel.Store.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Info">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="ID_Dataset" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="LandmarkID" />
+              <PropertyRef Name="ID_Dataset" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_Info">
+          <End Role="Info" Type="LandmarkDBModel.Store.Info" Multiplicity="1" />
+          <End Role="Video" Type="LandmarkDBModel.Store.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Info">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="ID_Dataset" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="LandmarkID" />
+              <PropertyRef Name="ID_Dataset" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LandmarkDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="LandmarkDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Images" EntityType="LandmarkDBModel.Image" />
+          <EntitySet Name="Infoes" EntityType="LandmarkDBModel.Info" />
+          <EntitySet Name="Videos" EntityType="LandmarkDBModel.Video" />
+          <AssociationSet Name="FK_Image_Info" Association="LandmarkDBModel.FK_Image_Info">
+            <End Role="Info" EntitySet="Infoes" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_Info" Association="LandmarkDBModel.FK_Video_Info">
+            <End Role="Info" EntitySet="Infoes" />
+            <End Role="Video" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LandmarkID" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ID_Dataset" Nullable="false" />
+          <NavigationProperty Name="Info" Relationship="LandmarkDBModel.FK_Image_Info" FromRole="Image" ToRole="Info" />
+        </EntityType>
+        <EntityType Name="Info">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ID_Dataset" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Latitude" />
+          <Property Type="Double" Name="Longitude" />
+          <Property Type="String" Name="Thumbnail_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Shot_Intro" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ID_Dataset" Nullable="false" />
+          <Property Type="String" Name="WikiKey" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Type" />
+          <NavigationProperty Name="Images" Relationship="LandmarkDBModel.FK_Image_Info" FromRole="Info" ToRole="Image" />
+          <NavigationProperty Name="Videos" Relationship="LandmarkDBModel.FK_Video_Info" FromRole="Info" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LandmarkID" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Thumbnail_URL" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ID_Dataset" Nullable="false" />
+          <NavigationProperty Name="Info" Relationship="LandmarkDBModel.FK_Video_Info" FromRole="Video" ToRole="Info" />
+        </EntityType>
+        <Association Name="FK_Image_Info">
+          <End Type="LandmarkDBModel.Info" Role="Info" Multiplicity="1" />
+          <End Type="LandmarkDBModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Info">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="ID_Dataset" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="LandmarkID" />
+              <PropertyRef Name="ID_Dataset" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Video_Info">
+          <End Type="LandmarkDBModel.Info" Role="Info" Multiplicity="1" />
+          <End Type="LandmarkDBModel.Video" Role="Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Info">
+              <PropertyRef Name="ID" />
+              <PropertyRef Name="ID_Dataset" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="LandmarkID" />
+              <PropertyRef Name="ID_Dataset" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LandmarkDBModelStoreContainer" CdmEntityContainer="LandmarkDBEntities">
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="LandmarkDBModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ID_Dataset" ColumnName="ID_Dataset" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LandmarkID" ColumnName="LandmarkID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Infoes">
+            <EntityTypeMapping TypeName="LandmarkDBModel.Info">
+              <MappingFragment StoreEntitySet="Info">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="WikiKey" ColumnName="WikiKey" />
+                <ScalarProperty Name="ID_Dataset" ColumnName="ID_Dataset" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Shot_Intro" ColumnName="Shot_Intro" />
+                <ScalarProperty Name="Thumbnail_URL" ColumnName="Thumbnail_URL" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="LandmarkDBModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="ID_Dataset" ColumnName="ID_Dataset" />
+                <ScalarProperty Name="Thumbnail_URL" ColumnName="Thumbnail_URL" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LandmarkID" ColumnName="LandmarkID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="LandmarkEntityModel">
+        <EntityTypeShape EntityType="LandmarkDBModel.Image" Width="1.5" PointX="3" PointY="1.125" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="LandmarkDBModel.Info" Width="1.5" PointX="0.75" PointY="2" Height="3.5186979166666652" />
+        <EntityTypeShape EntityType="LandmarkDBModel.Video" Width="1.5" PointX="3" PointY="4" Height="2.3648893229166656" />
+        <AssociationConnector Association="LandmarkDBModel.FK_Image_Info" >
+          <ConnectorPoint PointX="2.25" PointY="2.6487939453125" />
+          <ConnectorPoint PointX="3" PointY="2.6487939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="LandmarkDBModel.FK_Video_Info" >
+          <ConnectorPoint PointX="2.25" PointY="4.7593489583333328" />
+          <ConnectorPoint PointX="3" PointY="4.7593489583333328" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

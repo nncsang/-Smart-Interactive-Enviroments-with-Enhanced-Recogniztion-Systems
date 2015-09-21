@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="BookDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ImageBooks" EntityType="BookDBModel.ImageBook" />
+    <EntitySet Name="Infors" EntityType="BookDBModel.Infor" />
+    <EntitySet Name="Reviews" EntityType="BookDBModel.Review" />
+    <EntitySet Name="VideoBooks" EntityType="BookDBModel.VideoBook" />
+    <AssociationSet Name="FK_ImageBook_Infor" Association="BookDBModel.FK_ImageBook_Infor">
+      <End Role="Infor" EntitySet="Infors" />
+      <End Role="ImageBook" EntitySet="ImageBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Review" Association="BookDBModel.FK_Review_Review">
+      <End Role="Infor" EntitySet="Infors" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VideoBook_Infor" Association="BookDBModel.FK_VideoBook_Infor">
+      <End Role="Infor" EntitySet="Infors" />
+      <End Role="VideoBook" EntitySet="VideoBooks" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ImageBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="BookID" />
+    <NavigationProperty Name="Infor" Relationship="BookDBModel.FK_ImageBook_Infor" FromRole="ImageBook" ToRole="Infor" />
+  </EntityType>
+  <EntityType Name="Infor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Field1" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field2" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field3" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field4" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field5" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field6" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field7" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field8" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Type" Nullable="false" />
+    <Property Type="String" Name="Field9" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field10" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Field11" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ImageBooks" Relationship="BookDBModel.FK_ImageBook_Infor" FromRole="Infor" ToRole="ImageBook" />
+    <NavigationProperty Name="Reviews" Relationship="BookDBModel.FK_Review_Review" FromRole="Infor" ToRole="Review" />
+    <NavigationProperty Name="VideoBooks" Relationship="BookDBModel.FK_VideoBook_Infor" FromRole="Infor" ToRole="VideoBook" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IDInfor" />
+    <Property Type="String" Name="Title" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Body" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Infor" Relationship="BookDBModel.FK_Review_Review" FromRole="Review" ToRole="Infor" />
+  </EntityType>
+  <EntityType Name="VideoBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="BookID" Nullable="false" />
+    <NavigationProperty Name="Infor" Relationship="BookDBModel.FK_VideoBook_Infor" FromRole="VideoBook" ToRole="Infor" />
+  </EntityType>
+  <Association Name="FK_ImageBook_Infor">
+    <End Type="BookDBModel.Infor" Role="Infor" Multiplicity="0..1" />
+    <End Type="BookDBModel.ImageBook" Role="ImageBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImageBook">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Review">
+    <End Type="BookDBModel.Infor" Role="Infor" Multiplicity="0..1" />
+    <End Type="BookDBModel.Review" Role="Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="IDInfor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VideoBook_Infor">
+    <End Type="BookDBModel.Infor" Role="Infor" Multiplicity="1" />
+    <End Type="BookDBModel.VideoBook" Role="VideoBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Infor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VideoBook">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
